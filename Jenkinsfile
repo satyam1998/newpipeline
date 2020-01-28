@@ -40,17 +40,7 @@ pipeline {
                   }
 
             }
-             stage('Deploy') {
-
-                  steps {
-
-                        echo 'Deploying Sample Maven Project'
-                        copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'Email-pipeline', selector: upstream(fallbackToLastSuccessful: true)
-                        deploy adapters: [tomcat9(credentialsId: 'e146d8f5-fef8-4a23-a417-cd9d82495697', path: '', url: 'http://http://18.191.40.189:9090')], contextPath: '/', war: '**/*.war'
-       
-                  }
-
-            }
+             
            
 
 
